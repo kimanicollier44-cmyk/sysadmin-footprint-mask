@@ -1,0 +1,19 @@
+$ python3 main.py --flows
+gemini_flowx                       planner  Gemini-FlowX (Google-FlowX) <- ddkellar01/Google-FlowX
+google_workspace_studio_flows      starter  Google Workspace Studio Flows <- google-workspace-studio-flows (Intuition merge tree)
+google_flow_filmmaking             timeline Google Flow Filmmaking <- google-flow-filmmaking (Intuition merge tree)
+google_flow_engine                 router   Google Flow (DataX engine) <- ddkellar01/DataX engine google_flow
+merged plan uses all flows: True
+FlowX recommended agents: 3
+
+$ python3 main.py --carbon
+MAP     (front) purged 6 vars ['HISTFILE', 'SSH_CLIENT', 'SSH_CONNECTION', 'SUDO_USER', 'USER', 'LOGNAME']; workspace /tmp/secure-workspace
+MODEL   (middle) backend=unshare, namespaces=['ipc', 'uts', 'mount', 'pid'], predicted leaks=[]
+STRESS  (middle) 5/5 stress checks passed
+DECIDE  (master) brains=PROCEED, carbon=PROCEED -> PROCEED
+DECISION: PROCEED (mode: offline)
+
+$ python3 main.py --wipe-system-logs
+HOLD [wipe_system_logs] Deleting system logs destroys an audit trail that is not yours to erase. This tool cleans only its own volatile /tmp workspace.
+VERDICT: HOLD
+(exit 2)

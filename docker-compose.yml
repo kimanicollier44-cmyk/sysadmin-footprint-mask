@@ -1,0 +1,5 @@
+services:
+  footprint-mask:
+    build: .
+    image: credkellar/sysadmin-footprint-mask:latest
+    command: ["python3", "main.py"]

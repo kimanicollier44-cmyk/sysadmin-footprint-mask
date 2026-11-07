@@ -1,0 +1,10 @@
+# audit.rules — local audit template (name as supplied).
+# TEMPLATE ONLY: this file is a commented starting point for the
+# owner's own machine. It is never installed by this project, and
+# disabling or altering a running system's audit daemon is a HOLD
+# gate in footprintmask/brains.py — a masked session is not a
+# disabled audit trail.
+#
+# Example (owner reviews and installs manually, if at all):
+# -w /tmp/secure-workspace -p wa -k secure_workspace
+# -e 2

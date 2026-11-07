@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# secure-exec — Secure Execution Wrapper (as supplied, completed where
+# the video frame was obscured; see docs/SPEC_AS_SUPPLIED.md).
+# Leverages Linux namespaces (unshare) or rootless container runtimes
+# to isolate network interfaces, process trees, and filesystem mounts
+# during sensitive sysadmin tasks.
+set -Eeuo pipefail
+
+# Check for namespace support
+if command -v unshare >/dev/null 2>&1; then
+  echo "[+] Launching in isolated namespace (IPC, UTS, mount)..."
+  # Isolate IPC, UTS (hostname), mount namespaces
+  exec unshare --ipc --uts --mount --fork --pid bash -c '
+    hostname "localhost"
+    ip link set lo up 2>/dev/null || true
+    exec bash
+  '
+elif command -v podman >/dev/null 2>&1; then
+  echo "[+] Launching in rootless container..."
+  exec podman run --rm -it --network=none \
+    -v "$(pwd):/opt/bin:ro" \
+    alpine:latest sh
+else
+  echo "[-] Error: Neither unshare nor podman is available." >&2
+  exit 1
+fi

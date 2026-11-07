@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# sanitize-env — Environment Sanitizer (as supplied, completed where the
+# video frame was obscured; see docs/SPEC_AS_SUPPLIED.md).
+# Purges sensitive environment variables, resets default path
+# configurations, and masks host metadata before executing
+# administrative commands. Local, own-session use only.
+set -Eeuo pipefail
+
+# Purge potential tracking or identifying variables
+unset HISTFILE
+unset SSH_CLIENT
+unset SSH_CONNECTION
+unset SSH_TTY
+unset SUDO_USER
+unset SUDO_UID
+unset SUDO_GID
+unset USER
+unset LOGNAME
+
+# Set sanitized baseline environment
+export USER="root"
+export LOGNAME="root"
+export HOME="/tmp/secure-workspace"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PS1="\[\033[01;31m\][secure-sysadmin] \w \$ "
+
+# Create volatile workspace directory
+mkdir -p "$HOME"
+chmod 700 "$HOME"
+
+exec "$@"

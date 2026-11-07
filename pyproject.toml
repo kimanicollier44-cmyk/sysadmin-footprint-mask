@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sysadmin-footprint-mask"
+version = "1.0.0"
+description = "Local SysAdmin mask and digital footprint sanitizer — educational, own-system use, with all Google flows + Gemini Carbon 4 merged"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["footprintmask*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
