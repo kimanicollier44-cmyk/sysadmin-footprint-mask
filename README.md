@@ -1,3 +1,5 @@
+![sysadmin-footprint-mask Cover](assets/cover.png)
+
 # sysadmin-footprint-mask 🎭
 
 An enterprise-grade repository template and execution framework for a local System Administration Mask and Digital Footprint Sanitizer — for educational purposes, on systems you own. It establishes an isolated, low-telemetry workspace, strips identifying environment variables, keeps session history volatile, and wraps admin routines in namespace or container isolation — now with **all four Google flows** and **Gemini Carbon 4 Extended Thinking** merged in. 🌊🧠
